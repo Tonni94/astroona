@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="astrOona tekee erilaisia tarot-tulkintoja sekä astrologisia syntymäkarttoja.">
+    <meta name="keywords" content="Astrologia, Astrologiset syntymäkartat, tarot, tarot-tulkinta, tarot-tulkinnat, horoskoopit, horoskooppi">
+    <meta name="author" content="astrOona">
+    <title>Etusivu | astrOona | Tarot-tulkinnat ja astrologiset syntymäkartat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+    <script src="https://assets-global.website-files.com/6423ffa824c4cf8b7b4f57db/js/webflow.a92f5834c.js"></script>
+    <style>
+@font-face {
+    font-family: 'VigranMaroll';
+    src: url('./VigranMaroll-2OzWK.otf');
+}
+
+h1 {
+    font-family: 'VigranMaroll';
+}        
+.card {
+    background: rgba(98, 95, 95, 0.74);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(98, 95, 95, 0.25);
+    position: relative;
+    z-index: 1;
+    transition: all ease;
+    cursor: pointer;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(180, 73, 72, 0.5) 0%, rgba(180, 73, 72, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#mobile-menu-button {
+    position: relative;
+    z-index: 20;
+}
+
+#close-menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Styling for the mobile menu button icon */
+#mobile-menu-button svg {
+    fill: none;
+}
+
+/* Hide menu items by default */
+#mobile-menu a.hidden {
+    display: none;
+}
+
+/* Show menu items when mobile menu is toggled */
+#mobile-menu:not(.hidden) a {
+display: block;
+}
+
+/* Additional Styles for Mobile Menu Animation */
+ #mobile-menu.active {
+     transform: translateX(0);
+}
+
+.Palvelut {
+    position: relative;
+    z-index: 0;
+}
+
+#Mainbanner::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%; /* Adjust the height as needed */
+    background: linear-gradient(to top, #030202, rgba(27, 27, 27, 0));
+    z-index: 1;
+}
+.banner {
+    position: relative;
+    z-index: 2;
+}
+
+/* Define initial hidden state and animation state */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lottie-sunsystem-wrapper {
+    z-index: -1;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%
+}
+
+.lottie {
+    height: 100%
+}
+
+.sunsystem-animation-wrapper {
+    z-index: -1;
+    display: flex;
+    position: relative;
+    top: 22%;
+    bottom: 0%;
+    left: 5%;
+    right: 0%
+}
+
+@media only screen and (max-width: 400px) {
+.sunsystem-animation-wrapper {
+    z-index: -1;
+    display: flex;
+    position: relative;
+    top: 30%;
+    bottom: 0%;
+    left: 5%;
+    right: 0%;
+}
+}
+
+.h-divider {
+  margin: auto;
+  width: 70%;
+  position: relative;
+  z-index: 20;
+  margin-bottom: -1.2rem;
+}
+
+.h-divider .shadow {
+  overflow: hidden;
+  height: 20px;
+  z-index: 20;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.h-divider .shadow:after {
+  content: '';
+  display: block;
+  margin: -25px auto 0;
+  width: 100%;
+  height: 25px;
+  border-radius: 125px/12px;
+  box-shadow: 0 0 8px rgb(207, 35, 35);
+  z-index: 20;
+}
+
+.h-divider img {
+  position: absolute;
+  margin: 4px;
+  max-width: 61.5px;
+  border-radius: 100%;
+  border: 1px dashed #aaa;
+  z-index: 20;
+}
+
+.h-divider .text2 {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: -35px;
+  left: 50%;
+  margin-left: -25px;
+  border-radius: 100%;
+  box-shadow: 0 0 8px rgb(207, 35, 35);
+  background: white;
+  z-index: 20;
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.banner-content > * {
+  opacity: 0; /* Initially hidden */
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+@media (max-width: 768px) and (orientation: landscape) {
+    .bannerimg img {
+        max-height: 200px; /* Adjust as needed */
+        position: relative;
+        bottom: -20px; /* Further adjust as needed */
+    }
+}
+
+</style>
+</head>
+<body class="bg-[#030202]">
+    <header class="bg-[#1B1B1B] z-10">
+        <div class="max-w-[1700px] mx-auto px-4 py-3 flex items-center justify-between z-10">
+            <!-- Logo on the left -->
+            <div class="flex items-center z-10">
+                <img src="img/logo.png" alt="Logo" class="w-full h-full max-h-[80px] max-w-[80px]">
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden absolute -top-5 right-1 text-white focus:outline-none">
+                <svg class="h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <!-- Navigation menu -->
+            <nav id="nav-menu" class="md:flex flex-grow justify-center space-x-4 hidden md:block">
+                <a href="ajanvaraus.html" class="text-white border border-white hover:bg-white hover:text-black px-4 py-2 rounded-lg transition duration-300 z-10">Ajanvaraus</a>
+                <a href="#otayhteytta" class="text-white border border-white hover:bg-white hover:text-black px-4 py-2 rounded-lg transition duration-300 z-10">Ota yhteyttä</a>
+                <a href="#palvelut" class="text-white border border-white hover:bg-white hover:text-black px-4 py-2 rounded-lg transition duration-300 z-10">Palvelut</a>
+                <a href="#hinnasto" class="text-white border border-white hover:bg-[white] hover:text-black px-4 py-2 rounded-lg transition duration-300 z-10">Hinnasto</a>
+            </nav>
+        </div>
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="md:hidden bg-[#1B1B1B] px-4 fixed top-0 right-0 w-full min-h-screen text-center overflow-hidden flex flex-col items-center justify-center z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="absolute top-3 left-4">
+                <img src="img/logo.png" alt="Logo" class="w-full h-full max-h-[80px] max-w-[80px]">
+            </div>
+            <button id="close-menu-button" class="absolute top-5 right-3 text-white focus:outline-none hidden">
+                <svg class="h-10 w-10 absolute top-3 right-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <a href="ajanvaraus.html" class="block text-white text-lg py-3 hidden">Ajanvaraus</a>
+            <a href="#otayhteytta" class="block text-white text-lg py-3 hidden">Ota yhteyttä</a>
+            <a href="#palvelut" class="block text-white text-lg py-3 hidden">Palvelut</a>
+            <a href="#hinnasto" class="block text-white text-lg py-3 hidden">Hinnasto</a>
+            <div class="absolute bottom-0 right-0 p-1 z-0">
+                <!-- SVG with z-index set -->
+                <img src="img/menuruusut.png" alt="Decorative SVG" class="w-full h-full max-h-[220px] max-w-[247px]">
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-no-repeat bg-center bg-cover bg-fixed min-h-screen -mt-28 px-4 relative" style="background-image: url('img/bannerkuva.png'); box-shadow: 0 4px 8px rgba(180, 73, 72, 0.9);" id="Mainbanner">
+        <div class="banner max-w-[1200px] mx-auto relative gap-y-8 flex justify-center items-center min-h-screen">
+            <div class="banner-content text-white flex flex-col justify-center items-center text-center">
+                <h1 class="font-bold mb-5 text-5xl sm:text-6xl md:text-8xl animate-fade-in-up">astrOona</h1>
+                <p class="mb-5 text-lg md:text-xl animate-fade-in-up delay-200">Oletko kiinnostunut astrologiasta?<br> Syvenny syntymäkarttojen ja tarot-tulkinnojen maailmaan.</p>
+                <div class="animate-fade-in-up delay-400">
+                    <a href="#luelisaa" class="inline-block px-14 py-2.5 bg-transparent border hover:bg-white hover:text-black text-white font-semibold rounded-xl text-xl mb-2 sm:mr-1 sm:mb-0">Lue lisää</a>
+                    <a href="#hinnasto" class="inline-block px-14 py-2.5 bg-[#dd7973] hover:bg-[#e3938f] border text-black font-semibold rounded-xl text-xl">Hinnasto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="bannerimg absolute bottom-0 left-0 right-0 flex justify-center items-center z-20">
+        <img id="gifImage" src="./img/banneriruusut.png" alt="logogif" class="w-full max-w-[1400px] px-4 h-full max-h-[250px] z-20">
+    </div>
+    
+    
+        <section class="Palvelut relative bg-[#1B1B1B] overflow-hidden z-10" id="palvelut">
+            <div class="mx-auto mb-10 relative z-50">
+                <div class="mx-auto text-center bg-[#030202] py-20">
+                    <h2 class="text-[#B22222] text-5xl md:text-6xl mb-10 font-bold pt-20 bg-[#030202]">Palvelut</h2>
+                    <p class="text-white max-w-[1000px] mx-auto px-4">Tervetuloa astroOonan maailmaan, jossa tarjoan monipuolisia ja ammattitaitoisia palveluja henkisen hyvinvoinnin tueksi. Erikoisalaani kuuluvat tarot-tulkinnat ja astrologiset syntymäkartat, joilla autan sinua löytämään vastauksia elämän tärkeisiin kysymyksiin ja saamaan syvällisempää ymmärrystä itsestäsi ja elämänpolustasi.</p>
+                </div>
+                    <svg class="separator" width="100%" height="120" viewBox="0.1 0.1 180 40" preserveAspectRatio="none">
+                        <defs>
+                          <!-- Gradient for the red path -->
+                          <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#030202;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1b1b1b;stop-opacity:1" />
+                          </linearGradient>
+                          
+                          <!-- Gradient for the black path -->
+                          <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#030202;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#030202;stop-opacity:1" />
+                          </linearGradient>
+                        </defs>
+                        <g transform="translate(-18.298844,-77.973964)">
+                          <!-- Red path with gradient fill -->
+                          <path style="fill:url(#grad3);" d="M 31.615583,86.351641 H 192.16499 v 26.901969 c 0,0 -32.03411,-14.237983 -59.62682,-12.72484 -22.34188,1.2252 -54.779359,9.72634 -54.779359,9.72634 0,0 -22.029534,3.62882 -34.471238,-1.88988 -12.441702,-5.51871 -11.67199,-22.013589 -11.67199,-22.013589 z" />
+                          
+                          <!-- Black path with gradient fill -->
+                          <path style="fill:url(#grad4);" d="M 18.441597,78.106256 H 198.58126 v 39.288614 c 0,0 -43.10672,-27.825245 -73.47599,-19.687823 -30.369264,8.137423 -46.832208,12.548653 -46.832208,12.548653 0,0 -32.775418,8.05972 -46.735258,0 C 17.577964,102.19598 18.441597,78.106256 18.441597,78.106256 Z" />
+                        </g>
+                      </svg>                 
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 max-w-[1500px] gap-y-8 lg:gap-y-0 mx-auto relative z-50 px-4 mb-28" id="luelisaa">
+                    <div class="flex flex-col justify-center order-1 md:order-1 animate-on-scroll">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#B22222] mb-5 font-bold text-start">Tarot-tulkinta</h2>
+                        <p class="text-white text-start">Tarjoan ammattitaitoisia tarot-tulkintoja, jotka auttavat sinua löytämään vastauksia elämän tärkeisiin kysymyksiin. Yhdistän perinteisen tarot-viisauden nykyaikaisiin menetelmiin, tuoden selkeyttä ja ohjausta kaikilla elämän osa-alueilla. Astu mukaan matkalle itsetuntemukseen ja oivalluksiin kanssani.</p>
+                    </div>
+                    <div class="image-container flex justify-center items-center order-2 md:order-2 relative animate-on-scroll">
+                        <img src="img/tarotkortitt.png" alt="Tarot-tulkinta" class="rounded-full w-full h-full max-w-[600px] max-h-[600px]">
+                    </div>
+                    <div class="flex flex-col justify-center order-3 md:order-4 animate-on-scroll">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#B22222] mb-5 font-bold text-end">Syntymäkartat</h2>
+                        <p class="text-white text-end">Astrologisessa syntymäkarttatulkinnassa perehdymme sinun syntymäaikasi perusteella luotuun tähtikarttaan, joka on uniikki kuvaus siitä mitä universumissa tapahtui kun sinä synnyit. Osa syntymäkarttasi merkeistä ja planeetoista kertoo sinusta ja millainen sinä olet, osa puolestaan kuvaa elämässäsi tapahtuvia muutoksia, kohtaamiasi ihmisiä ja opinhetkiä. Se mitä sinun karttasi meille paljastaa, riippuu myös pitkälti siitä kuinka avoimesti olet valmis vastaanottamaan syntymäkarttasi salat. Syntymäkartta tulkinta sopii erityisesti sinulle, joka haluat oppia itsestäsi lisää ja löytämään oman polkusi ja yhteytesi universumiin.</p>
+                    </div>
+                    <div class="image-container2 flex justify-center items-center order-4 md:order-3 relative animate-on-scroll">
+                        <img src="img/syntymakartat.png" alt="Syntymäkartat" class="rounded-full w-full h-full max-w-[600px] max-h-[600px]">
+                    </div>
+                </div>
+
+        <div class="lottie-sunsystem-wrapper">
+            <div class="sunsystem-animation-wrapper">
+                <div data-preserve-aspect-ratio="xMidYMid slice" class="img is--sunsystem"
+                    data-w-id="26022210-9bd0-10cb-4b8e-450a86c7981a" data-animation-type="lottie"
+                    data-src="https://assets-global.website-files.com/6423ffa824c4cf8b7b4f57db/6436992a1f47ef624df3fc69_sunsystem-2.json"
+                    data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                    data-renderer="svg" data-default-duration="60" data-duration="0"></div>
+                <div class="html w-embed w-script">
+                    <script>
+                        var Webflow = Webflow || [];
+                        Webflow.push(function () {
+                            window.addEventListener('resize', function () {
+                                console.log("resizing");
+                                window.Webflow.require("lottie").lottie.resize();
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--
+    <div class="h-divider">
+        <div class="shadow"></div>
+        <div class="text2"><img src="https://t1.gstatic.com/images?q=tbn:ANd9GcQsmMfybMIwoE5etmOIAuvnFWdfv_8C1Bq15urJFqwhhI55FyYNP2YuUA" /></div>
+      </div>-->
+
+    <section class="Hinnasto bg-[#030202]" id="hinnasto">
+        <div class="row red rotate-180" style="margin-top: -1px;">
+            <div>
+              <svg id="" preserveAspectRatio="xMidYMax meet" class="svg-separator sep1" viewBox="0 0 1600 100" data-height="100">
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M1040,56c0.5,0,1,0,1.6,0c-16.6-8.9-36.4-15.7-66.4-15.7c-56,0-76.8,23.7-106.9,41C881.1,89.3,895.6,96,920,96
+          C979.5,96,980,56,1040,56z"></path>
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M1699.8,96l0,10H1946l-0.3-6.9c0,0,0,0-88,0s-88.6-58.8-176.5-58.8c-51.4,0-73,20.1-99.6,36.8
+          c14.5,9.6,29.6,18.9,58.4,18.9C1699.8,96,1699.8,96,1699.8,96z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1400,96c19.5,0,32.7-4.3,43.7-10c-35.2-17.3-54.1-45.7-115.5-45.7c-32.3,0-52.8,7.9-70.2,17.8
+          c6.4-1.3,13.6-2.1,22-2.1C1340.1,56,1340.3,96,1400,96z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M680,96c23.7,0,38.1-6.3,50.5-13.9C699.6,64.8,679,40.3,622.2,40.3c-30,0-49.8,6.8-66.3,15.8
+          c1.3,0,2.7-0.1,4.1-0.1C619.7,56,620.2,96,680,96z"></path>
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M-40,95.6c28.3,0,43.3-8.7,57.4-18C-9.6,60.8-31,40.2-83.2,40.2c-14.3,0-26.3,1.6-36.8,4.2V106h60V96L-40,95.6
+          z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M504,73.4c-2.6-0.8-5.7-1.4-9.6-1.4c-19.4,0-19.6,13-39,13c-19.4,0-19.5-13-39-13c-14,0-18,6.7-26.3,10.4
+          C402.4,89.9,416.7,96,440,96C472.5,96,487.5,84.2,504,73.4z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1205.4,85c-0.2,0-0.4,0-0.6,0c-19.5,0-19.5-13-39-13s-19.4,12.9-39,12.9c0,0-5.9,0-12.3,0.1
+          c11.4,6.3,24.9,11,45.5,11C1180.6,96,1194.1,91.2,1205.4,85z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1447.4,83.9c-2.4,0.7-5.2,1.1-8.6,1.1c-19.3,0-19.6-13-39-13s-19.6,13-39,13c-3,0-5.5-0.3-7.7-0.8
+          c11.6,6.6,25.4,11.8,46.9,11.8C1421.8,96,1435.7,90.7,1447.4,83.9z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M985.8,72c-17.6,0.8-18.3,13-37,13c-19.4,0-19.5-13-39-13c-18.2,0-19.6,11.4-35.5,12.8
+          c11.4,6.3,25,11.2,45.7,11.2C953.7,96,968.5,83.2,985.8,72z"></path>
+         
+          <path class="" style="opacity: 1;fill: #B22222;" d="M265.5,72.3c-1.5-0.2-3.2-0.3-5.1-0.3c-19.4,0-19.6,13-39,13c-19.4,0-19.6-13-39-13
+          c-15.9,0-18.9,8.7-30.1,11.9C164.1,90.6,178,96,200,96C233.7,96,248.4,83.4,265.5,72.3z"></path>
+          <path class="" style="opacity: 1;fill: #af3f5d;" d="M1692.3,96V85c0,0,0,0-19.5,0s-19.6-13-39-13s-19.6,13-39,13c-0.1,0-0.2,0-0.4,0c11.4,6.2,24.9,11,45.6,11
+          C1669.9,96,1684.8,96,1692.3,96z"></path>
+          <path class="" style="fill: #1B1B1B;" d="M-40,95.6C20.3,95.6,20.1,56,80,56s60,40,120,40s59.9-40,120-40s60.3,40,120,40s60.3-40,120-40
+          s60.2,40,120,40s60.1-40,120-40s60.5,40,120,40s60-40,120-40s60.4,40,120,40s59.9-40,120-40s60.3,40,120,40s60.2-40,120-40
+          s60.2,40,120,40s59.8,0,59.8,0l0.2,143H-60V96L-40,95.6z"></path>
+          </svg>
+            </div>
+                </div>        
+            <div class="max-w-[1100px] mx-auto text-center my-20 sm:my-32 px-4">
+            <h2 class="text-5xl md:text-6xl text-[#B22222] mb-10 font-bold">Hinnasto</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+
+                <div class="card rounded-lg p-4 shadow-lg flex flex-col cursor-default">
+                    <h3 class="text-2xl text-white mb-4 font-bold">Pika tarot-tulkinta</h3>
+                    <p class="text-4xl font-bold mb-4 text-white">€49<span class="text-xl align-top">90</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Vastaus yhteen kysymykseen
+                        </li>
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Nostetaan 1-3 tarot-korttia
+                        </li>
+                        <li class="flex items-center text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Soveltuu hyvin ensikertalaiselle
+                        </li>
+                    </ul>
+                    <a href="https://astroona.fi/maksut/index.php?id=tarot" class="bg-[#dd7973] hover:bg-[#e3938f] border text-black py-3 px-4 rounded-lg font-bold mt-auto">Varaa aika</a>
+                </div>
+    
+                <div class="card rounded-lg p-4 shadow-lg flex flex-col cursor-default">
+                    <h3 class="text-2xl text-white mb-4 font-bold">Laaja tarot-tulkinta</h3>
+                    <p class="text-4xl font-bold mb-4 text-white">€99<span class="text-xl align-top">90</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Vastaus useampaan kysymykseen tai yhteen elämänosa-alueeseen.
+                        </li>
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Nostetaan vähintään 5 korttia.
+                        </li>
+                        <li class="flex items-center text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Soveltuu hyvin puolivuotis- tai vuositulkintaan. 
+                        </li>
+                    </ul>
+                    <a href="https://astroona.fi/maksut/index.php?id=tarot" class="bg-[#dd7973] hover:bg-[#e3938f] border text-black py-3 px-4 rounded-lg font-bold mt-auto">Varaa aika</a>
+                </div>
+                
+                <div class="card rounded-lg p-4 shadow-lg flex flex-col cursor-default">
+                    <h3 class="text-2xl text-white mb-4 font-bold">Syntymäkartat</h3>
+                    <p class="text-4xl font-bold mb-4 text-white">€129<span class="text-xl align-top">90</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Paneudumme sinun syntymähetkesi mukaiseen astrologiseen syntymäkarttaan.
+                        </li>
+                        <li class="flex items-center mb-2 text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Saat vastauksia oman elämäsi kiemuroihin.
+                        </li>
+                        <li class="flex items-center text-white text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="max-h-[24px] max-w-[24px] h-full w-full text-green-500 mr-2" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 13l4 4L19 7"></path>
+                            </svg> Tulkinnan jälkeen saat hyvän käsityksen omista vahvuuksista ja heikkouksista.
+                        </li>
+                    </ul>
+                    <a href="https://astroona.fi/maksut/index.php?id=kartat" class="bg-[#dd7973] hover:bg-[#e3938f] border text-black py-3 px-4 rounded-lg font-bold mt-auto">Varaa aika</a>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-3 max-w-[1100px] mx-auto mt-9 bg-[#B22222] px-4 pt-4 md:px-8 md:pt-8 pb-20 rounded-t-lg -mb-1">
+            <div class="">
+            <h2 class="text-3xl md:text-5xl text-white mb-6 font-bold">Lahjakortti</h2>
+            <p class="text-xl font-semibold mb-2 text-white mb-4">Tarjoan myös palveluilleni lahjakortteja. Ota yhteyttä ja ilmoita haluamasi palvelu, maksun suorittamisen jälkeen saat lahjakortin sähköpostiisi.</p>
+            <a href="#otayhteytta" class="inline-block px-14 py-2.5 bg-white border hover:bg-gray-300 text-black font-semibold rounded-xl text-xl mb-4 sm:mr-1 md:mb-0">Ota yhteyttä</a>
+        </div>
+        <div class="giftcard rounded-lg cursor-default">
+            <img src="img/lahjakortti.png" alt="lahjakortti" class="rounded-lg">
+        </div>
+        </div>-->
+        <div class="row red">
+            <div>
+              <svg id="" preserveAspectRatio="xMidYMax meet" class="svg-separator sep1" viewBox="0 0 1600 100" data-height="100">
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M1040,56c0.5,0,1,0,1.6,0c-16.6-8.9-36.4-15.7-66.4-15.7c-56,0-76.8,23.7-106.9,41C881.1,89.3,895.6,96,920,96
+          C979.5,96,980,56,1040,56z"></path>
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M1699.8,96l0,10H1946l-0.3-6.9c0,0,0,0-88,0s-88.6-58.8-176.5-58.8c-51.4,0-73,20.1-99.6,36.8
+          c14.5,9.6,29.6,18.9,58.4,18.9C1699.8,96,1699.8,96,1699.8,96z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1400,96c19.5,0,32.7-4.3,43.7-10c-35.2-17.3-54.1-45.7-115.5-45.7c-32.3,0-52.8,7.9-70.2,17.8
+          c6.4-1.3,13.6-2.1,22-2.1C1340.1,56,1340.3,96,1400,96z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M680,96c23.7,0,38.1-6.3,50.5-13.9C699.6,64.8,679,40.3,622.2,40.3c-30,0-49.8,6.8-66.3,15.8
+          c1.3,0,2.7-0.1,4.1-0.1C619.7,56,620.2,96,680,96z"></path>
+          <path class="" style="opacity: 1;fill: #1B1B1B;" d="M-40,95.6c28.3,0,43.3-8.7,57.4-18C-9.6,60.8-31,40.2-83.2,40.2c-14.3,0-26.3,1.6-36.8,4.2V106h60V96L-40,95.6
+          z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M504,73.4c-2.6-0.8-5.7-1.4-9.6-1.4c-19.4,0-19.6,13-39,13c-19.4,0-19.5-13-39-13c-14,0-18,6.7-26.3,10.4
+          C402.4,89.9,416.7,96,440,96C472.5,96,487.5,84.2,504,73.4z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1205.4,85c-0.2,0-0.4,0-0.6,0c-19.5,0-19.5-13-39-13s-19.4,12.9-39,12.9c0,0-5.9,0-12.3,0.1
+          c11.4,6.3,24.9,11,45.5,11C1180.6,96,1194.1,91.2,1205.4,85z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M1447.4,83.9c-2.4,0.7-5.2,1.1-8.6,1.1c-19.3,0-19.6-13-39-13s-19.6,13-39,13c-3,0-5.5-0.3-7.7-0.8
+          c11.6,6.6,25.4,11.8,46.9,11.8C1421.8,96,1435.7,90.7,1447.4,83.9z"></path>
+          <path class="" style="opacity: 1;fill: #B22222;" d="M985.8,72c-17.6,0.8-18.3,13-37,13c-19.4,0-19.5-13-39-13c-18.2,0-19.6,11.4-35.5,12.8
+          c11.4,6.3,25,11.2,45.7,11.2C953.7,96,968.5,83.2,985.8,72z"></path>
+         
+          <path class="" style="opacity: 1;fill: #B22222;" d="M265.5,72.3c-1.5-0.2-3.2-0.3-5.1-0.3c-19.4,0-19.6,13-39,13c-19.4,0-19.6-13-39-13
+          c-15.9,0-18.9,8.7-30.1,11.9C164.1,90.6,178,96,200,96C233.7,96,248.4,83.4,265.5,72.3z"></path>
+          <path class="" style="opacity: 1;fill: #af3f5d;" d="M1692.3,96V85c0,0,0,0-19.5,0s-19.6-13-39-13s-19.6,13-39,13c-0.1,0-0.2,0-0.4,0c11.4,6.2,24.9,11,45.6,11
+          C1669.9,96,1684.8,96,1692.3,96z"></path>
+          <path class="" style="fill: #1B1B1B;" d="M-40,95.6C20.3,95.6,20.1,56,80,56s60,40,120,40s59.9-40,120-40s60.3,40,120,40s60.3-40,120-40
+          s60.2,40,120,40s60.1-40,120-40s60.5,40,120,40s60-40,120-40s60.4,40,120,40s59.9-40,120-40s60.3,40,120,40s60.2-40,120-40
+          s60.2,40,120,40s59.8,0,59.8,0l0.2,143H-60V96L-40,95.6z"></path>
+          </svg>
+            </div>
+                </div>     
+        </section>
+
+    <section class="Minusta px-4 relative bg-[#1B1B1B] py-24" id="Minusta">
+        <!-- Absolute positioning for the SVG -->
+        <div class="absolute -top-2 -left-3 p-4">
+            <img src="img/nurkkaruusut.png" alt="Decorative SVG" class="h-full w-full max-w-[414px] max-h-[369px]">
+        </div>
+        <!-- Grid for the content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-[1400px] mx-auto">
+            <div class="z-10">
+                <img src="./img/selfie.png" class="rounded-lg" alt="">
+            </div>
+            <div>
+                <h2 class="text-5xl font-bold text-[#B22222] mt-20 mb-10">Minusta</h2>
+                <p class="text-white">
+                    Olen astrOona, ystäväni kutsuvat Oonaksi. Tarjoan astrologisia syntymäkarttatulkintoja sekä tarot-tulkintoja. Olen useamman vuoden ajan perehtynyt astrologiauniversumiin ja syntymäkarttatulkinnoissani pyrin löytämään asiakkaani vahvuudet ja heikkoudet,  mahdollisuuksien mukaan myös tämä elämän ja karman tuomat opit. Olen tulkitsijana positiivinen, ja haluan asiakkaideni saavan uutta näkökulmaa ja motivaatiota omalle polulleen. 
+                    Teen tarot-tulkintoja varmalla ja intuitiivisellä otteella. Jokainen asiakkaani on ainutlaatuinen ja käytänkin useampaa korttipakkaa tulkinnoissani, jotta saan tulkinnasta juuri sinun näköisesi.<br> Minuun saa olla yhteydessä matalalla kynnyksellä, jos et ole vielä varma mikä palveluistani on juuri sinun tarpeisiisi sopiva tai mikäli haluat tilata minut esim. juhlatilaisuuteesi.
+                    
+                    Taikuutta päivääsi! ✨</p>
+            </div>
+        </div>
+    </section>
+
+    <svg class="separator -mt-1" width="100%" height="120" viewBox="0.1 0.1 180 40" preserveAspectRatio="none">
+        <defs>
+            <!-- Gradient for the red path -->
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#1b1b1b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#030202;stop-opacity:1" />
+            </linearGradient>
+                          
+                <!-- Gradient for the black path -->
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#1b1b1b;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1b1b1b;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    <g transform="translate(-18.298844,-77.973964)">
+        <!-- Red path with gradient fill -->
+        <path style="fill:url(#grad1);" d="M 31.615583,86.351641 H 192.16499 v 26.901969 c 0,0 -32.03411,-14.237983 -59.62682,-12.72484 -22.34188,1.2252 -54.779359,9.72634 -54.779359,9.72634 0,0 -22.029534,3.62882 -34.471238,-1.88988 -12.441702,-5.51871 -11.67199,-22.013589 -11.67199,-22.013589 z" />
+                          
+         <!-- Black path with gradient fill -->
+        <path style="fill:url(#grad2);" d="M 18.441597,78.106256 H 198.58126 v 39.288614 c 0,0 -43.10672,-27.825245 -73.47599,-19.687823 -30.369264,8.137423 -46.832208,12.548653 -46.832208,12.548653 0,0 -32.775418,8.05972 -46.735258,0 C 17.577964,102.19598 18.441597,78.106256 18.441597,78.106256 Z" />
+        </g>
+    </svg>  
+<!-- ====== Contact Section Start -->
+<section class="bg-[#030202] py-28 relative z-10 max-w-[1400px] mx-auto px-4 md:px-16 overflow-hidden" id="otayhteytta">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="max-w-[570px] mb-12 lg:mb-0">
+                    <span class="block mb-2 text-white font-semibold">
+                        Haluatko varata ajan tai heräsikö kysyttävää?
+                    </span>
+                    <h2 class="text-white mb-2 uppercase font-bold text-2xl sm:text-text-3xl lg:text-4xl">
+                        Ota yhteyttä
+                    </h2>
+                    <p class="text-white leading-relaxed mb-2">
+                        Voit ottaa minuun yhteyttä täyttämällä yhteydenottolomakkeen tai<br> lähettämällä sähköpostia osoitteeseen info@astroona.fi.
+                    </p>
+                    <p class="text-white leading-relaxed mb-2">
+                        Kaikille palveluilleni on myös saatavilla lahjakortteja. <br>Kysy lisää ottamalla yhteyttä!
+                    </p>
+                </div>
+            <div class="w-full">
+                <div class="bg-[#1b1b1b] relative rounded-lg p-4 sm:p-12">
+                    <form action="send_email.php" method="post">
+                        <div class="mb-6">
+                            <input type="text" placeholder="Nimesi" class="w-full rounded py-3 px-[14px] text-body-color text-base border border-gray-400 outline-none focus-visible:shadow-none focus:border-[#5B751B]" />
+                        </div>
+                        <div class="mb-6">
+                            <input type="email" placeholder="Sähköpostiosoitteesi" class="w-full rounded py-3 px-[14px] text-body-color text-base border border-gray-400 outline-none focus-visible:shadow-none focus:border-[#5B751B]"/>
+                        </div>
+                        <div class="mb-6">
+                            <input type="text" placeholder="Puhelinnumerosi" class="w-full rounded py-3 px-[14px] text-body-color text-base border border-gray-400 outline-none focus-visible:shadow-none focus:border-[#5B751B]" />
+                        </div>
+                        <div class="mb-6">
+                            <textarea rows="6" placeholder="Viestisi" class="w-full rounded py-3 px-[14px] text-body-color text-base border border-gray-400 resize-none outline-none focus-visible:shadow-none focus:border-[#5B751B]"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="inline-block px-14 py-2.5 bg-[#dd7973] hover:bg-[#e3938f] border text-black font-semibold rounded-xl text-xl md:mx-auto">
+                                Lähetä
+                            </button>
+                        </div>
+                    </form>
+                    <div>
+                        <span class="absolute -top-16 -right-16 z-[-1] -rotate-12">
+                            <img src="img/ruusu.png" alt="" class="w-full h-full max-w-[129px] max-h-[136px]">
+                            </svg>
+                        </span>
+                        <span class="absolute -right-10 top-[90px] z-[-1]">
+                            <svg width="34" height="134" viewBox="0 0 34 134" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="31.9993" cy="132" r="1.66667" transform="rotate(180 31.9993 132)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="117.333" r="1.66667" transform="rotate(180 31.9993 117.333)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="102.667" r="1.66667" transform="rotate(180 31.9993 102.667)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="88" r="1.66667" transform="rotate(180 31.9993 88)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="73.3333" r="1.66667" transform="rotate(180 31.9993 73.3333)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="45" r="1.66667" transform="rotate(180 31.9993 45)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="16" r="1.66667" transform="rotate(180 31.9993 16)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="59" r="1.66667" transform="rotate(180 31.9993 59)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="30.6666" r="1.66667" transform="rotate(180 31.9993 30.6666)"
+                                    fill="#ffff" />
+                                <circle cx="31.9993" cy="1.66665" r="1.66667" transform="rotate(180 31.9993 1.66665)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="132" r="1.66667" transform="rotate(180 17.3333 132)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="117.333" r="1.66667" transform="rotate(180 17.3333 117.333)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="102.667" r="1.66667" transform="rotate(180 17.3333 102.667)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="88" r="1.66667" transform="rotate(180 17.3333 88)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="73.3333" r="1.66667" transform="rotate(180 17.3333 73.3333)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="45" r="1.66667" transform="rotate(180 17.3333 45)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="16" r="1.66667" transform="rotate(180 17.3333 16)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="59" r="1.66667" transform="rotate(180 17.3333 59)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="30.6666" r="1.66667" transform="rotate(180 17.3333 30.6666)"
+                                    fill="#ffff" />
+                                <circle cx="17.3333" cy="1.66665" r="1.66667" transform="rotate(180 17.3333 1.66665)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="132" r="1.66667" transform="rotate(180 2.66536 132)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="117.333" r="1.66667" transform="rotate(180 2.66536 117.333)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="102.667" r="1.66667" transform="rotate(180 2.66536 102.667)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="88" r="1.66667" transform="rotate(180 2.66536 88)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="73.3333" r="1.66667" transform="rotate(180 2.66536 73.3333)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="45" r="1.66667" transform="rotate(180 2.66536 45)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="16" r="1.66667" transform="rotate(180 2.66536 16)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="59" r="1.66667" transform="rotate(180 2.66536 59)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="30.6666" r="1.66667" transform="rotate(180 2.66536 30.6666)"
+                                    fill="#ffff" />
+                                <circle cx="2.66536" cy="1.66665" r="1.66667" transform="rotate(180 2.66536 1.66665)"
+                                    fill="#ffff" />
+                            </svg>
+                        </span>
+                        <span class="absolute -left-20 -bottom-20 z-[-1]">
+                            <img src="img/ruusut.png" alt="" class="w-full h-full max-w-[152px] max-h-[188px]">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ====== Contact Section End -->
+    
+    
+<!--FOOTER-->
+<footer class="relative bottom-0 bg-[#030202] p-4">
+    <div class="mx-auto text-white">
+        <!-- Container for logo and lists -->
+        <div class="flex flex-col max-w-[1700px] mx-auto">
+            <!-- Logo on the top left -->
+            <div class="mb-6">
+                <img src="./img/logo.png" alt="Logo" class="w-full h-full max-h-[80px] max-w-[80px]">
+            </div>
+            <!-- Lists stacked vertically under the logo -->
+            <div class="grid gap-y-6 md:gap-y-0 grid-cols-2 sm:grid-cols-3 text-left w-full">
+                <ul class="flex flex-col mb-6 sm:mb-0">
+                    <h2 class="font-semibold text-xl mb-5">Linkit</h2>
+                    <li class="mb-3"><a href="https://astroona.fi/maksut/" class="text-white text-lg hover:text-[#e3938f]">Ajanvaraus</a></li>
+                    <li class="mb-3"><a href="#otayhteytta" class="text-white text-lg hover:text-[#e3938f]">Ota yhteyttä</a></li>
+                    <li class="mb-3"><a href="#Palvelut" class="text-white text-lg hover:text-[#e3938f]">Palvelut</a></li>
+                    <li class="mb-3"><a href="#Hinnasto" class="text-white text-lg hover:text-[#e3938f]">Hinnasto</a></li>
+                </ul>
+                <ul class="flex flex-col mb-6 sm:mb-0">
+                    <h2 class="font-semibold text-xl mb-5">Socials</h2>
+                    <li class="mb-3"><a href="https://www.facebook.com/" class="text-white text-lg hover:text-[#e3938f]">Facebook</a></li>
+                    <li class="mb-3"><a href="https://www.instagram.com/" class="text-white text-lg hover:text-[#e3938f]">Instagram</a></li>
+                    <li class="mb-3"><a href="https://www.tiktok.com/@astroona" class="text-white text-lg hover:text-[#e3938f]">TikTok</a></li>
+                </ul>
+                <ul class="flex flex-col">
+                    <h2 class="font-semibold text-xl mb-5">Yhteystiedot</h2>
+                    <li class="mb-3"><a href="mailto:miika@helmisolutions.fi" class="text-white text-lg hover:text-[#e3938f]">info@astroona.fi</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Copyright text -->
+        <div class="flex items-center justify-center text-white text-sm mt-4">
+            <p class="mr-1">Copyright &#169;</p>
+            <span id="get-current-year" class="mr-1">2024</span>
+            <p>Helmi Solutions</p>
+        </div>
+    </div>
+</footer>
+<!--FOOTER END-->
+<script>
+// JavaScript for mobile menu toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMenuButton = document.getElementById('close-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuItems = mobileMenu.querySelectorAll('a');
+
+// Function to close the mobile menu
+function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    mobileMenuButton.classList.remove('hidden');
+    closeMenuButton.classList.add('hidden');
+    // Hide menu items
+    menuItems.forEach(item => {
+        item.classList.add('hidden');
+    });
+}
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    mobileMenuButton.classList.add('hidden');
+    closeMenuButton.classList.remove('hidden');
+    // Show menu items
+    menuItems.forEach(item => {
+        item.classList.remove('hidden');
+    });
+});
+
+closeMenuButton.addEventListener('click', closeMobileMenu);
+
+// Close the mobile menu when any link is clicked
+menuItems.forEach(item => {
+    item.addEventListener('click', closeMobileMenu);
+});
+</script>
+    
+    <script>
+        $(document).ready(function() {
+            $(".card, .giftcard").tilt({
+                maxTilt: 15,
+                perspective: 1500,
+                easing: "cubic-bezier(.03,.98,.52,.99)",
+                speed: 500,
+                glare: false,
+                maxGlare: 0.2,
+                scale: 1.01
+            });
+        });
+    </script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+    </script>
+</body>
+</html>
